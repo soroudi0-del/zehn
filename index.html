@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>تمرین ذهن مامانجون</title>
+<style>
+:root{--bg:#fdf6ea;--card:#fff;--ink:#2a2a35;--pri:#2a7f6f;--pri2:#48a690;--acc:#f0a53a;--bad:#c4503f;--soft:#e6f2ee;--ln:#eadfca;--sh:0 6px 16px rgba(70,45,10,.10)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+body{margin:0;font-family:Vazirmatn,"Segoe UI",Tahoma,sans-serif;color:var(--ink);font-size:22px;line-height:1.65;min-height:100vh;background:radial-gradient(circle at 100% 0,#ffe6bd,transparent 45%),radial-gradient(circle at 0 100%,#d3eee3,transparent 45%),var(--bg);background-attachment:fixed}
+#app{max-width:560px;margin:0 auto;padding:16px 16px 44px}
+h1{font-size:30px;margin:6px 0 10px;text-align:center}h2{font-size:26px;text-align:center;margin:8px 0}
+p.s{text-align:center;color:#665;margin:4px 0 12px}
+button{font:inherit;cursor:pointer;border:0;border-radius:20px;padding:15px 18px;background:linear-gradient(180deg,var(--pri2),var(--pri));color:#fff;font-size:23px;width:100%;margin:7px 0;box-shadow:0 4px 0 #1f5f53,var(--sh);transition:transform .08s}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #1f5f53}
+button.alt{background:#fff;color:var(--ink);border:2px solid var(--ln);box-shadow:0 3px 0 var(--ln)}
+button.row{display:flex;align-items:center;gap:14px;text-align:right;background:var(--card);color:var(--ink);border:2px solid var(--ln);box-shadow:0 3px 0 var(--ln),var(--sh);position:relative;padding:12px 14px}
+button.row small{display:block;font-size:17px;color:#776;line-height:1.4}
+button.row.dn{border-color:var(--pri2);background:#f1faf6}
+.ic{width:54px;height:54px;border-radius:17px;display:flex;align-items:center;justify-content:center;font-size:30px;flex:none}
+.tick{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:var(--pri);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center}
+.card{background:var(--card);border-radius:22px;padding:15px;margin:12px 0;border:2px solid var(--ln);box-shadow:var(--sh)}
+.hero{background:linear-gradient(135deg,#2a7f6f,#58b39d);color:#fff;border:0;text-align:center;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12);left:-40px;top:-50px}
+.pop{animation:pop .5s}@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.big{font-size:58px;text-align:center;direction:ltr;margin:12px 0;font-weight:bold}
+.ans{font-size:48px;text-align:center;direction:ltr;min-height:72px;background:var(--soft);border-radius:18px;margin:6px 0;border:2px dashed var(--pri2)}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.pad button{margin:0;font-size:32px;padding:13px;background:#fff;color:var(--ink);border:2px solid var(--ln);box-shadow:0 3px 0 var(--ln)}
+.pad .ok{background:var(--pri);color:#fff;border:0;box-shadow:0 3px 0 #1f5f53}.pad .del{background:var(--acc);color:#fff;font-size:22px;border:0;box-shadow:0 3px 0 #b97b1c}
+.bar{display:flex;justify-content:space-between;color:#665;font-size:20px}
+.prog{height:12px;background:var(--ln);border-radius:8px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--pri2),var(--acc));border-radius:8px}
+.board{position:relative;width:100%;aspect-ratio:1;background:var(--soft);border-radius:26px;margin:10px 0;border:2px solid var(--ln)}
+.blk{position:absolute;width:20%;height:20%;transform:translate(-50%,-50%);border-radius:18px;background:#b9cdc7;padding:0;margin:0;box-shadow:none}
+.blk.on{background:var(--acc);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 0 6px rgba(240,165,58,.35)}
+.stim{height:260px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:26px;border:2px solid var(--ln);box-shadow:var(--sh)}
+.dot{width:160px;height:160px;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.fb{text-align:center;min-height:40px;font-size:26px}.good{color:var(--pri)}.bad{color:var(--bad)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:9px}.opts button{margin:0}
+.r{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #ddd;gap:8px}
+.note{font-size:17px;color:#776;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+.cd{aspect-ratio:1;font-size:46px;padding:0;margin:0;background:linear-gradient(135deg,#b9d9d0,#8fc3b6);color:#fff}.cd.up{background:#fff;border:3px solid var(--acc)}.cd.ok{background:#cdebd8;box-shadow:none}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal div{border-radius:12px;padding:3px 0;min-height:60px;font-size:16px;background:#fff;border:1px solid var(--ln)}
+.cal small{display:block;font-size:13px;line-height:1.2}
+.cal .h{background:none;border:0;min-height:0;color:#776;font-weight:bold}.cal .e{background:none;border:0}
+.cal .y{background:#d6efe0;border-color:var(--pri2)}.cal .n{background:#fbe3dd;border-color:#e6a99d}.cal .t{outline:3px solid var(--acc)}
+.cal b{display:block;font-size:21px}
+.nav{display:flex;gap:8px;align-items:center}.nav button{width:70px;margin:0}.nav h2{flex:1;margin:0}
+input{font:inherit;font-size:24px;width:100%;padding:12px;border-radius:14px;border:2px solid var(--ln);text-align:center;-webkit-user-select:text;user-select:text}
+button:focus-visible,input:focus-visible{outline:4px solid var(--acc);outline-offset:2px}@media(prefers-reduced-motion:reduce){.pop{animation:none}*{transition:none!important}}
+.cf{position:fixed;top:-50px;font-size:30px;animation:fall 4s linear forwards;pointer-events:none;z-index:5}@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}@media(prefers-reduced-motion:reduce){.cf{display:none}}
+</style></head><body><div id="app"></div>
+<script>
+const A=document.getElementById('app');
+const fa=s=>String(s).replace(/(\d)\.(\d)/g,'$1٫$2').replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[rnd(0,a.length-1)];
+const avgOf=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+const p2=n=>String(n).padStart(2,'0');
+const dk=d=>d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());
+let onMenu=true,run=0,keyH=null,gameStart=Date.now();const begun=()=>{onMenu=false;try{navigator.wakeLock&&navigator.wakeLock.request('screen').catch(()=>{})}catch(e){}gameStart=Date.now();return ++run};
+document.addEventListener('keydown',e=>{if(keyH)keyH(e)});
+/* ذخیره‌سازی */
+let S={};try{S=JSON.parse(localStorage.getItem('zehn_set'))||{}}catch(e){}
+S.name=cleanName(S.name||'');const who=()=>/جون|جان/.test(S.name)?S.name:S.name+' جان';if(!S.first)S.first=dk(new Date());
+function cleanName(v){return v.replace(/[<>&"'`$\\]/g,'').trim()||'مامانجون'}
+function saveS(){try{localStorage.setItem('zehn_set',JSON.stringify(S))}catch(e){}document.body.style.fontSize=(S.big?27:22)+'px'}saveS();
+let MEM=[];function load(){for(const k of['zehn_hist','zehn_hist2']){try{const a=JSON.parse(localStorage.getItem(k)||'null');if(Array.isArray(a)&&(a.length||!MEM.length))return a}catch(e){}}return MEM}
+function save(o){o.date=new Date().toISOString();o.day=dk(new Date());o.dur=Date.now()-gameStart;try{const arr=load().concat([o]);MEM=arr;const j=JSON.stringify(arr);localStorage.setItem('zehn_hist',j);localStorage.setItem('zehn_hist2',j)}catch(e){}}
+const fmt=ms=>{const s=Math.round(ms/1000),m=Math.floor(s/60);return m?fa(m)+' دقیقه و '+fa(s%60)+' ثانیه':fa(s)+' ثانیه'};
+const NAMES={math:'ریاضی',corsi:'حافظه‌ی مکان‌ها',gng:'سبز برو، قرمز نه',stroop:'رنگ کلمه',speed:'ردیاب سریع',pairs:'جفت‌یابی'};
+const CL={math:'#ffe3b8',corsi:'#cfe6ff',gng:'#cdf0d9',stroop:'#ffd3e0',speed:'#fff0a8',pairs:'#e2d6ff'};
+const PR=['آفرین','باریکلا','احسنت','دمت گرم','چه عالی','ماشاالله','دست‌مریزاد','بارک‌الله','عالی بود','چه خوب','خسته نباشی','چه ذهن قوی‌ای'];
+/* تقویم شمسی */
+function g2j(gy,gm,gd){const gdm=[0,31,59,90,120,151,181,212,243,273,304,334];let jy=gy>1600?979:0;gy-=gy>1600?1600:621;const g2=gm>2?gy+1:gy;
+let days=365*gy+Math.floor((g2+3)/4)-Math.floor((g2+99)/100)+Math.floor((g2+399)/400)-80+gd+gdm[gm-1];
+jy+=33*Math.floor(days/12053);days%=12053;jy+=4*Math.floor(days/1461);days%=1461;
+if(days>365){jy+=Math.floor((days-1)/365);days=(days-1)%365}
+return{year:jy,month:days<186?1+Math.floor(days/31):7+Math.floor((days-186)/30),day:1+(days<186?days%31:(days-186)%30)}}
+const pd=d=>g2j(d.getFullYear(),d.getMonth()+1,d.getDate());
+const MN=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const noon=d=>{const x=new Date(d);x.setHours(12,0,0,0);return x};
+const mStart=d=>{d=noon(d);while(pd(d).day>1)d.setDate(d.getDate()-1);return d};
+let calS=mStart(new Date());
+function streak(days){let n=0,d=noon(new Date());if(!days[dk(d)])d.setDate(d.getDate()-1);while(days[dk(d)]){n++;d.setDate(d.getDate()-1)}return n}
+function byDay(){const o={};load().forEach(h=>{(o[h.day]=o[h.day]||[]).push(h.game)});return o}
+
+function menu(){run++;keyH=null;onMenu=true;const days=byDay(),td=days[dk(new Date())]||[],done=new Set(td),h=new Date().getHours();
+const g=h>=5&&h<12?'صبح بخیر':h>=12&&h<16?'ظهر بخیر':h>=16&&h<20?'عصر بخیر':'شب بخیر';
+A.innerHTML=`<h1>🧠 تمرین ذهن ${S.name}</h1>
+<div class="card hero"><div style="font-size:26px">${g} ${who()} 🌸</div>
+<div>${td.length?`✔ امروز ${fa(td.length)} تمرین انجام شد`:'امروز هنوز تمرین نکرده‌ای. یک بازی کوچک؟'}</div>
+<div class="note" style="color:#e8f6f1">${streak(days)?'🔥 '+fa(streak(days))+' روز پشت سر هم':''} ${medalsN()}</div><div style="margin-top:8px;font-size:20px">💬 ${hope()}</div></div>
+${[['math','➕','ریاضی','چهار عمل اصلی با زمان‌سنج','mathSetup'],['corsi','🟦','حافظه‌ی مکان‌ها','ترتیب مربع‌های روشن را تکرار کنید','corsi'],['gng','🟢','سبز برو، قرمز نه','سرعت و خودداری','gng'],['stroop','🎨','رنگ کلمه','رنگ نوشته را بگویید، نه خود کلمه','stroop'],['speed','⭐','ردیاب سریع','ستاره کجا بود؟','speed'],['pairs','🃏','جفت‌یابی','کارت‌های همانند را پیدا کنید','pairs']]
+.map(x=>`<button class="row ${done.has(x[0])?'dn':''}" onclick="intro('${x[0]}','${x[2]}','${x[4]}')"><span class="ic" style="background:${CL[x[0]]}">${x[1]}</span><span><b>${x[2]}</b><small>${x[3]}</small></span>${done.has(x[0])?'<span class="tick">✔</span>':''}</button>`).join('')}
+<button class="alt" onclick="calS=mStart(new Date());calendar()">📅 تقویم تمرین‌ها</button>
+<button class="alt" onclick="hist()">📈 پیشرفت من</button>
+<button class="alt" onclick="settings()">⚙️ تنظیمات</button>
+`}
+
+const HELP={
+math:'سؤال‌های جمع، تفریق، ضرب و تقسیم؛ در سه نوع: «هوشمند» (خودش سختی را با توانایی شما تنظیم می‌کند)، «سریع و ساده» و «چالشی». جواب را با دکمه‌ها بنویسید و «تأیید» بزنید. زمان کل ثبت می‌شود. عجله نکنید؛ درست‌بودن مهم‌تر است.',
+corsi:'مربع‌ها یکی‌یکی روشن می‌شوند. بعد همان ترتیب را لمس کنید. برای هر طول دو فرصت دارید. اگر هر دو اشتباه شد، بازی تمام می‌شود.',
+gng:'اول ۴ بار تمرین (حساب نمی‌شود). بعد ۳۰ دایره می‌آید. سبز را فوراً لمس کنید. قرمز را لمس نکنید.',
+stroop:'یک کلمه‌ی رنگی می‌آید، مثلاً «قرمز» که با رنگ آبی نوشته شده. باید رنگ نوشته (آبی) را انتخاب کنید، نه معنی کلمه را. ۴ بار تمرین دارید که حساب نمی‌شود.',
+speed:'به علامت ＋ وسط نگاه کنید. ستاره لحظه‌ای در یکی از ۸ جای دور می‌آید. بعد جایش را لمس کنید. هر چه خوب‌تر باشید، سریع‌تر می‌شود.',
+pairs:'کارت‌ها برعکس‌اند. هر بار دو کارت را باز کنید. اگر همانند بودند می‌مانند. همه‌ی جفت‌ها را پیدا کنید، با کمترین حرکت. تعداد کارت‌ها خودش با توانایی شما تنظیم می‌شود.'};
+function intro(g,t,fn){run++;keyH=null;onMenu=false;A.innerHTML=`<h2>${t}</h2><div class="card">${HELP[g]}<div class="note" style="margin-top:8px">🧭 سختی بازی به‌مرور با توانایی شما تنظیم می‌شود.</div></div><button onclick="${fn}()">شروع کنیم، ${who()}</button><button class="alt" onclick="menu()">بازگشت</button>`}
+
+const HOPE=['هر روز که تمرین می‌کنی، یک قدم جلو می‌روی. قدم کوچک هم قدم است.','یادگیری هیچ‌وقت دیر نیست. مغز در هر سنی می‌تواند چیزهای تازه یاد بگیرد.','تجربه‌ی یک عمر پشتت است و حالا داری چیزهای تازه هم اضافه می‌کنی.','اشتباه یعنی داری یاد می‌گیری. فقط امتحان کردنش هم ارزش دارد.','آمدنِ هر روزت از هر نتیجه‌ای مهم‌تر است.','امروز هم یک روز خوب برای شروع است.','پشتکارت قابل تحسین است. همین‌طور آرام و پیوسته ادامه بده.','هر بار که حواست را جمع می‌کنی، داری ذهنت را ورزش می‌دهی.','روزهای کندتر هم می‌آید و می‌رود. مهم این است که ادامه می‌دهی.','خودت را با دیروزِ خودت مقایسه کن، نه با کسی دیگر. تو داری بهتر می‌شوی.','کسانی که دوستت دارند از دیدن پشتکارت خوشحال می‌شوند.','دست‌مریزاد! ذهنِ فعال، زندگیِ پرنشاط.','هر روز که می‌آیی، ذهنت فعال‌تر و پرانرژی‌تر می‌شود.','تو می‌توانی؛ همین حالا هم نشان دادی که می‌توانی!','خانواده‌ات به پشتکار تو افتخار می‌کنند.','سن فقط یک عدد است؛ ذهن تو زنده و پویاست.','امروز از دیروز بهتر شدی، فردا از امروز هم بهتر می‌شوی.','آدم‌های صبور به هر جا که بخواهند می‌رسند؛ تو صبوری.','ذهن تو مثل یک باغ است؛ هر تمرین یک بذر تازه می‌کارد.'];
+const hope=()=>HOPE[Math.floor(Date.now()/864e5)%HOPE.length];
+const GN={'math:a':'ریاضی هوشمند','math:s':'ریاضی سریع و ساده','math:h':'ریاضی چالشی',corsi:'حافظه‌ی مکان‌ها',gng:'سبز برو، قرمز نه',stroop:'رنگ کلمه',speed:'ردیاب سریع',pairs:'جفت‌یابی'};
+const GI={'math:a':'🧠','math:s':'⚡','math:h':'🧩',corsi:'🟦',gng:'🟢',stroop:'🎨',speed:'⭐',pairs:'🃏'};
+const msf=v=>fa(Math.round(v))+' میلی‌ثانیه';
+const METg={'math:a':{low:0,v:x=>x.lv,f:v=>'مرحله '+fa(+v.toFixed(1))},'math:s':{low:1,v:x=>x.time/x.n/1000,f:v=>fa(v.toFixed(1))+' ثانیه/سؤال'},'math:h':{low:1,v:x=>x.time/x.n/1000,f:v=>fa(v.toFixed(1))+' ثانیه/سؤال'},
+corsi:{low:0,v:x=>x.score,f:v=>fa(+v.toFixed(1))+' مربع'},gng:{low:1,v:x=>x.rt,f:msf},stroop:{low:1,v:x=>x.rt,f:msf},speed:{low:1,v:x=>x.minMs,f:msf},pairs:{low:1,v:x=>x.moves/(x.np||6),f:v=>fa(v.toFixed(1))+' حرکت/جفت'}};
+const gk=x=>x.game==='math'?'math:'+(x.mode||'h'):x.game;
+const MV=x=>{const m=METg[gk(x)],v=m?m.v(x):0;return isFinite(v)&&v>0?v:0};
+const ACC=x=>x.game==='gng'?1-(x.miss+x.falseAlarm)/30:x.game==='pairs'?null:x.n?x.correct/x.n:null;
+function trend(v,low){const n=v.length;if(n<2)return null;const k=Math.min(3,Math.floor(n/2)),a=avgOf(v.slice(0,k)),b=avgOf(v.slice(-k));return{ch:(low?a-b:b-a)/a*100}}
+function maxStreak(days){let m=0,c=0,p=null;Object.keys(days).sort().forEach(k=>{c=p&&Math.round((new Date(k+'T12:00')-new Date(p+'T12:00'))/864e5)===1?c+1:1;m=Math.max(m,c);p=k});return m}
+function medals(){const h=load(),days=byDay(),nd=Object.keys(days).length,ms=maxStreak(days),M=[],add=(ok,i,t)=>M.push({ok,i,t});
+add(h.length>=1,'🌱','اولین قدم');add(h.length>=10,'🌿','۱۰ تمرین');add(h.length>=50,'🌳','۵۰ تمرین');add(h.length>=150,'🏔️','۱۵۰ تمرین');
+add(nd>=7,'📅','۷ روز تمرین');add(nd>=30,'🗓️','۳۰ روز تمرین');add(ms>=3,'🔥','۳ روز پشت‌سرهم');add(ms>=7,'⭐','۷ روز پشت‌سرهم');add(ms>=14,'🏅','۱۴ روز پشت‌سرهم');add(ms>=30,'👑','۳۰ روز پشت‌سرهم');
+add(new Set(h.map(x=>x.game)).size>=6,'🎯','همه‌ی بازی‌ها را امتحان کرد');return M}
+const medalsN=()=>{const n=medals().filter(m=>m.ok).length;return n?'· 🏅 '+fa(n)+' مدال':''};
+function result(game,lines,rec){const full=Object.assign({game},rec),g=gk(full),mt=METg[g],prev=load().filter(x=>gk(x)===g).map(MV).filter(v=>v>0),m=MV(full),mb=medals();
+let msg='🌱 اولین ثبت این بازی انجام شد. از حالا پیشرفتت را دنبال می‌کنیم!';
+if(m>0&&prev.length){const bst=mt.low?Math.min(...prev):Math.max(...prev),lst=prev[prev.length-1];msg=(mt.low?m<bst:m>bst)?'🏆 رکورد جدید! از همه‌ی دفعه‌های قبل بهتر بود.':(mt.low?m<lst:m>lst)?'📈 از دفعه‌ی قبل بهتر شد!':'🌤 این بار کمی آرام‌تر بود. اشکالی ندارد؛ هر تمرین یک قدم است.'}
+save(full);const nm=medals().filter((x,i)=>x.ok&&!mb[i].ok);
+A.innerHTML=`<div class="pop" style="font-size:40px;text-align:center;font-weight:bold;color:var(--pri);margin:8px 0">🎉 ${pick(PR)} ${who()}!</div><div style="text-align:center;font-size:24px;margin-bottom:6px">🌟 تو فوق‌العاده‌ای، همین که تمرین کردی یعنی برنده‌ای! 🌟</div><div class="card">${lines.map(l=>`<div class="r"><span>${l[0]}</span><b>${l[1]}</b></div>`).join('')}</div>
+<div class="card hero">${msg}${nm.length?'<br>🏅 مدال تازه: '+nm.map(x=>x.i+' '+x.t).join('، '):''}<div style="margin-top:8px;font-size:19px">💬 ${pick(HOPE)}</div></div>
+<button onclick="menu()">🏠 بازگشت به صفحه‌ی اصلی</button><button class="alt" onclick="${game==='math'?'mathSetup':game}()">🔁 یک دور دیگر</button><button class="alt" onclick="hist()">📈 پیشرفت من</button>`;celebrate()}
+function celebrate(){const rr=run,E=['🎉','⭐','🌸','🎊','💐','🌟'];for(let k=0;k<22;k++){const e=document.createElement('div');e.className='cf';e.textContent=E[k%E.length];e.style.cssText='left:'+rnd(2,92)+'%;animation-delay:'+(k*0.12)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),6500)}}
+
+/* ---------- ریاضی ---------- */
+function mathSetup(){run++;keyH=null;onMenu=false;const c=(m,t,d)=>`<div class="card"><b>${t}</b><div class="note" style="text-align:right">${d}</div><div class="opts"><button ${m==='a'?'':'class="alt" '}onclick="math(50,'${m}')">۵۰ سؤال</button><button ${m==='a'?'':'class="alt" '}onclick="math(100,'${m}')">۱۰۰ سؤال</button></div></div>`;
+A.innerHTML=`<h2>ریاضی</h2>${c('a','🧠 هوشمند (پیشنهادی)','از سطح خودتان شروع می‌شود. اگر خوب بودید کمی سخت‌تر، اگر سخت بود آسان‌تر می‌شود.')}${c('s','⚡ سریع و ساده','اعداد تک‌رقمی، جواب‌های تند.')}${c('h','🧩 چالشی','اعداد دورقمی؛ فکر بیشتر و کندتر.')}<button class="alt" onclick="menu()">بازگشت</button>`}
+const AD=[[1,9],[1,9],[10,40],[10,99],[30,99]],AB=[[1,9],[1,9],[1,20],[10,99],[30,99]],SU=[[2,18],[2,18],[10,50],[10,99],[40,99]],MU=[[2,9],[2,9],[2,9],[2,10],[6,12]],DR=[[1,9],[1,9],[2,9],[2,10],[3,12]];
+function genQ(M,L){const i=M==='s'?1:M==='h'?3:Math.min(5,Math.max(1,L||2))-1,o=pick(M==='a'&&L<2?['+','−']:['+','−','×','÷']);let a,b,r;
+if(o==='+'){a=rnd(...AD[i]);b=rnd(...AB[i]);r=a+b}else if(o==='−'){a=rnd(...SU[i]);b=rnd(1,i<2?Math.min(9,a):a);r=a-b}
+else if(o==='×'){a=rnd(...MU[i]);b=rnd(...MU[i]);r=a*b}else{b=rnd(...MU[i]);r=rnd(...DR[i]);a=b*r}
+return{t:`${fa(a)} ${o} ${fa(b)}`,r,o}}
+function math(N,M){const my=begun();const pvA=load().filter(x=>x.game==='math'&&x.mode==='a'&&x.lv).pop();let L=pvA?pvA.lv:2,blk=[],i=0,ok=0,bad=0,buf='',q=genQ(M,L);const t0=performance.now(),st={},slow=[];let tq=t0;
+function draw(){A.innerHTML=`<div class="bar"><span>سؤال ${fa(i+1)} از ${fa(N)}</span><span>${M==='a'?'مرحله '+fa(L)+' · ':''}✔ ${fa(ok)} ✘ ${fa(bad)}</span></div><div class="prog"><i style="width:${i/N*100}%"></i></div>
+<div class="big">${q.t} = ؟</div><div class="ans">${buf?fa(buf):''}</div>
+<div class="pad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="K(${n})">${fa(n)}</button>`).join('')}<button class="del" onclick="K('d')">پاک</button><button onclick="K(0)">۰</button><button class="ok" onclick="K('ok')">تأیید</button></div><button class="alt" onclick="menu()">انصراف</button>`}
+window.K=k=>{if(my!==run)return;
+if(k==='d')buf=buf.slice(0,-1);
+else if(k==='ok'){if(buf==='')return;const now=performance.now();const el=now-tq;slow.push(el);tq=now;const s=st[q.o]=st[q.o]||[0,0,0];s[2]+=el;
+const good=+buf===q.r;if(good){ok++;s[0]++}else{bad++;s[1]++}if(M==='a'){blk.push([good,el]);if(blk.length===5){const g5=blk.filter(x=>x[0]).length,t5=avgOf(blk.map(x=>x[1]))/1000;if(g5===5&&t5<=[4,5,9,12,16][L-1])L=Math.min(5,L+1);else if(g5<=3)L=Math.max(1,L-1);blk=[]}}buf='';i++;
+if(i>=N){const tot=now-t0,prev=load().filter(h=>h.game==='math'&&h.n===N&&(h.mode||'h')===M),best=prev.length?Math.min(...prev.map(h=>h.time)):null;keyH=null;
+return result('math',[['نوع تمرین',M==='s'?'سریع و ساده':M==='a'?'هوشمند (مرحله‌ی پایانی '+fa(L)+')':'چالشی'],['پاسخ درست',fa(ok)],['پاسخ غلط',fa(bad)],['کل زمان',fmt(tot)],['میانگین هر سؤال',fa((tot/N/1000).toFixed(1))+' ثانیه'],
+...['+','−','×','÷'].filter(o=>st[o]).map(o=>['عمل '+o,fa(st[o][0])+' درست، '+fa(st[o][1])+' غلط']),
+...(best?[['بهترین زمان قبلی',fmt(best)]]:[])],{n:N,mode:M,lv:M==='a'?L:undefined,ops:st,correct:ok,wrong:bad,time:Math.round(tot)})}
+q=genQ(M,L)}else if(buf.length<4)buf+=k;draw()};
+keyH=e=>{const n=e.key.replace(/[۰-۹]/g,c=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(c)).replace(/[٠-٩]/g,c=>'٠١٢٣٤٥٦٧٨٩'.indexOf(c));if(/^\d$/.test(n))K(+n);else if(e.key==='Enter')K('ok');else if(e.key==='Backspace')K('d')};draw()}
+
+/* ---------- حافظه‌ی مکان‌ها (Corsi) ---------- */
+async function corsi(){const r=begun();keyH=null;
+const P=[[16,16],[50,12],[84,16],[30,42],[72,40],[14,70],[44,86],[86,78],[52,64]];
+A.innerHTML=`<h2>حافظه‌ی مکان‌ها</h2><div class="bar"><span id="L"></span><span id="V"></span></div><p class="s" id="st"></p>
+<div class="board">${P.map((p,i)=>`<button class="blk" id="b${i}" style="left:${p[0]}%;top:${p[1]}%" onpointerdown="T(${i})"></button>`).join('')}</div><button class="alt" onclick="menu()">انصراف</button>`;
+const st=m=>{if(r===run)document.getElementById('st').textContent=m};
+const flash=async(i,ms=550)=>{const b=document.getElementById('b'+i);if(!b)return;b.classList.add('on');await sleep(ms);b.classList.remove('on')};
+const pvC=load().filter(x=>x.game==='corsi').pop();let len=Math.max(2,Math.min(7,(pvC?pvC.score:3)-1)),tries=0,span=0,total=0,okN=0,tap=null;window.T=i=>{if(tap){flash(i,200);tap(i)}};
+await sleep(700);
+while(true){if(r!==run)return;
+document.getElementById('L').textContent='طول: '+fa(len);document.getElementById('V').textContent='فرصت '+fa(tries+1)+' از ۲';
+st('نگاه کنید...');await sleep(800);
+const seq=[];while(seq.length<len){const n=rnd(0,8);if(seq[seq.length-1]!==n&&!(seq.length>1&&seq.slice(-2).includes(n)))seq.push(n)}
+for(const i of seq){if(r!==run)return;await flash(i);await sleep(300)}
+st('نوبت شماست');let idx=0;
+const ok=await new Promise(res=>{tap=i=>{if(i!==seq[idx]){tap=null;res(false)}else if(++idx===seq.length){tap=null;res(true)}}});
+if(r!==run)return;total++;
+if(ok){okN++;span=Math.max(span,len);st('✔ درست!');len++;tries=0}
+else{st('✘ اشتباه شد');tries++;if(tries>=2)break}
+if(len>9)break;await sleep(1000)}
+await sleep(700);
+if(r!==run)return;result('corsi',[['حداکثر طول درست (دامنه‌ی حافظه)',fa(span)],['دفعات درست',fa(okN)+' از '+fa(total)]],{score:span,correct:okN,n:total})}
+
+/* ---------- سبز برو، قرمز نه ---------- */
+async function gng(){const r=begun();keyH=null;const PRAC=4,N=30;const pvG=load().filter(x=>x.game==='gng'&&x.rt>0).pop();let Wd=pvG?Math.min(1800,Math.max(900,pvG.rt*2)):1500,hits=0,miss=0,fal=0,cr=0,rts=[],cur=null,goN=0,ngN=0;
+A.innerHTML=`<h2>سبز برو، قرمز نه</h2><p class="s"><b class="good">سبز</b> = لمس کنید. <b class="bad">قرمز</b> = دست نزنید.</p>
+<div class="stim" id="z" onpointerdown="Z()"><span style="color:#999">آماده باشید...</span></div><div class="fb" id="f"></div><div class="bar"><span id="c"></span></div><button class="alt" onclick="menu()">انصراف</button>`;
+window.Z=()=>{if(cur&&!cur.done){cur.done=true;cur.t=performance.now();cur.res()}};
+const z=document.getElementById('z'),f=document.getElementById('f');await sleep(1500);
+for(let i=0;i<PRAC+N;i++){if(r!==run)return;const pr=i<PRAC;
+document.getElementById('c').textContent=pr?'تمرین '+fa(i+1)+' از '+fa(PRAC):fa(i-PRAC+1)+' از '+fa(N);
+z.innerHTML='';f.textContent='';await sleep(rnd(800,1600));if(r!==run)return;
+const go=Math.random()<0.7;z.innerHTML=`<div class="dot" style="background:${go?'#2e9e5b':'#d9473a'}"></div>`;
+const t0=performance.now();cur={done:false};await new Promise(res=>{cur.res=res;setTimeout(res,Wd)});
+const tapped=cur.done,rt=tapped?cur.t-t0:0;cur=null;z.innerHTML='';
+if(!pr){go?goN++:ngN++;if(go&&tapped){hits++;rts.push(rt)}else if(go)miss++;else if(tapped)fal++;else cr++}
+if(go)Wd=tapped?Math.max(800,Wd*.94):Math.min(1800,Wd*1.12);f.innerHTML=go&&tapped?'<span class="good">✔ عالی</span>':go?'<span class="bad">دیر شد</span>':tapped?'<span class="bad">قرمز بود!</span>':'<span class="good">✔ درست، دست نزدید</span>';
+await sleep(600)}
+if(r!==run)return;result('gng',[['سبزِ درست لمس‌شده',fa(hits)+' از '+fa(goN)],['قرمزِ درست نادیده‌گرفته',fa(cr)+' از '+fa(ngN)],['لمس اشتباهِ قرمز',fa(fal)],['سبزِ از دست رفته',fa(miss)],['میانگین سرعت (موارد درست)',fa(Math.round(avgOf(rts)))+' میلی‌ثانیه'],['فرصت پاسخ در پایان (خودکار)',fa(Math.round(Wd))+' میلی‌ثانیه']],{win:Math.round(Wd),hits,miss,falseAlarm:fal,rt:Math.round(avgOf(rts))})}
+
+/* ---------- رنگ کلمه (Stroop) ---------- */
+const sec=a=>a.length?fa((avgOf(a)/1000).toFixed(2))+' ثانیه':'—';
+function stroop(){const my=begun();keyH=null;const PRAC=4,N=24;
+const C=[['قرمز','#d62828'],['آبی','#1d4ed8'],['سبز','#15803d'],['زرد','#b88400']];
+const pvT=load().filter(x=>x.game==='stroop').pop(),pa=pvT?pvT.correct/pvT.n:.8,PC=pa>=.9?.1:pa<.7?.4:.25;let i=0,okC=0,okI=0,nC=0,nI=0,rC=[],rI=[],q,t0;
+function next(){if(my!==run)return;
+if(i>=PRAC+N){const ok=okC+okI;return result('stroop',[['پاسخ درست',fa(ok)+' از '+fa(N)],['کلمه و رنگ هماهنگ',fa(okC)+' از '+fa(nC)+'، '+sec(rC)],['کلمه و رنگ ناهماهنگ',fa(okI)+' از '+fa(nI)+'، '+sec(rI)],['اثر تداخل (تفاوت سرعت)',rI.length&&rC.length?fa(Math.round(avgOf(rI)-avgOf(rC)))+' میلی‌ثانیه':'—']],{pc:PC,correct:ok,n:N,rt:Math.round(avgOf(rC.concat(rI)))})}
+const w=rnd(0,3),cong=Math.random()<PC,c=cong?w:pick([0,1,2,3].filter(x=>x!==w));q={w,c,cong,pr:i<PRAC};
+A.innerHTML=`<h2>رنگ کلمه</h2><p class="s">رنگِ <b>نوشته</b> را انتخاب کنید.</p><div class="bar"><span>${q.pr?'تمرین '+fa(i+1)+' از '+fa(PRAC):fa(i-PRAC+1)+' از '+fa(N)}</span></div>
+<div class="stim"><span style="font-size:70px;font-weight:bold;color:${C[c][1]}">${C[w][0]}</span></div><div class="fb" id="f"></div>
+<div class="opts">${C.map((x,k)=>`<button onclick="SK(${k})">${x[0]}</button>`).join('')}</div><button class="alt" onclick="menu()">انصراف</button>`;t0=performance.now()}
+window.SK=async k=>{if(my!==run||!q)return;const rt=performance.now()-t0,good=k===q.c,Q=q;q=null;
+if(!Q.pr){if(Q.cong){nC++;if(good){okC++;rC.push(rt)}}else{nI++;if(good){okI++;rI.push(rt)}}}
+document.getElementById('f').innerHTML=good?'<span class="good">✔ درست</span>':'<span class="bad">✘ رنگ نوشته را بگویید</span>';i++;await sleep(650);next()};
+next()}
+
+/* ---------- ردیاب سریع ---------- */
+async function speed(){const r=begun();keyH=null;const N=20;const pvS=load().filter(x=>x.game==='speed'&&x.minMs).pop();let d=pvS?Math.min(700,Math.max(120,pvS.minMs*1.4)):600,ok=0,tap=null,ds=[];
+const P=[];for(let k=0;k<8;k++){const a=k*Math.PI/4;P.push([50+38*Math.sin(a),50-38*Math.cos(a)])}
+A.innerHTML=`<h2>ردیاب سریع</h2><div class="bar"><span id="c"></span></div>
+<div class="board">${P.map((p,i)=>`<button class="blk" id="s${i}" style="left:${p[0]}%;top:${p[1]}%;border-radius:50%;font-size:34px" onclick="Q(${i})"></button>`).join('')}
+<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:34px">＋</div></div><div class="fb" id="f"></div><button class="alt" onclick="menu()">انصراف</button>`;
+window.Q=i=>{if(tap)tap(i)};await sleep(1500);
+for(let n=0;n<N;n++){if(r!==run)return;document.getElementById('c').textContent=fa(n+1)+' از '+fa(N);document.getElementById('f').textContent='به وسط نگاه کنید';
+await sleep(1000);const t=rnd(0,7),b=document.getElementById('s'+t);if(!b)return;b.textContent='⭐';await sleep(d);b.textContent='';
+document.getElementById('f').textContent='ستاره کجا بود؟';ds.push(d);
+const a=await new Promise(res=>tap=i=>{tap=null;res(i)});if(r!==run)return;
+const good=a===t,bb=document.getElementById('s'+t);bb.textContent='⭐';
+if(good){ok++;d=Math.max(40,d*.85);document.getElementById('f').innerHTML='<span class="good">✔ درست</span>'}
+else{d=Math.min(900,d*1.25);document.getElementById('f').innerHTML='<span class="bad">✘ این‌جا بود</span>'}
+await sleep(800);bb.textContent=''}
+const thr=Math.round(avgOf(ds.slice(-6)));
+if(r!==run)return;result('speed',[['پاسخ درست',fa(ok)+' از '+fa(N)],['آستانه‌ی تشخیص (میانگین ۶ دور آخر)',fa(thr)+' میلی‌ثانیه']],{correct:ok,n:N,minMs:thr})}
+
+/* ---------- جفت‌یابی ---------- */
+function pairs(){const my=begun();keyH=null;const LV=[3,4,6,8],NP=LV.reduce((a,b)=>Math.abs(b-(S.pl||4))<Math.abs(a-(S.pl||4))?b:a),E=['🍎','🌹','🐦','🍋','🦋','🍵','🍇','🌻'].slice(0,NP);
+const c=[...E,...E];for(let k=c.length-1;k>0;k--){const j=rnd(0,k);[c[k],c[j]]=[c[j],c[k]]}let open=[],found=0,moves=0,lock=false;const t0=performance.now();
+A.innerHTML=`<h2>جفت‌یابی</h2><div class="bar"><span id="m">حرکت: ۰</span><span id="p">${fa(0)} از ${fa(NP)} جفت</span></div>
+<div class="grid" style="grid-template-columns:repeat(${NP<4?3:4},1fr)">${c.map((e,i)=>`<button class="cd" id="c${i}" onclick="F(${i})">❓</button>`).join('')}</div><button class="alt" onclick="menu()">انصراف</button>`;
+const el=i=>document.getElementById('c'+i);
+window.F=async i=>{if(my!==run||lock||open.includes(i)||el(i).classList.contains('ok'))return;
+el(i).textContent=c[i];el(i).classList.add('up');open.push(i);
+if(open.length<2)return;moves++;lock=true;const[a,b]=open;
+if(c[a]===c[b]){found++;[a,b].forEach(x=>{el(x).classList.remove('up');el(x).classList.add('ok')})}
+else{await sleep(1200);if(my!==run)return;[a,b].forEach(x=>{el(x).textContent='❓';el(x).classList.remove('up')})}
+open=[];lock=false;document.getElementById('m').textContent='حرکت: '+fa(moves);document.getElementById('p').textContent=fa(found)+' از '+fa(NP)+' جفت';
+if(found===NP){const t=performance.now()-t0;if(moves<=NP*2)S.pl=LV[Math.min(3,LV.indexOf(NP)+1)];else if(moves>NP*3.5)S.pl=LV[Math.max(0,LV.indexOf(NP)-1)];saveS();result('pairs',[['تعداد جفت‌ها',fa(NP)],['تعداد حرکت',fa(moves)+' (کمترین ممکن '+fa(NP)+')'],['زمان',fmt(t)],['دفعه‌ی بعد',S.pl>NP?'کارت‌های بیشتر 💪':S.pl<NP?'کمی سبک‌تر':'همین اندازه']],{moves,np:NP,time:Math.round(t)})}}}
+
+/* ---------- تقویم ---------- */
+function calendar(){run++;keyH=null;onMenu=false;const days=byDay(),s=calS,m=pd(s).month,y=pd(s).year,tdk=dk(new Date());
+let cells='',d=new Date(s);for(let k=0;k<(s.getDay()+1)%7;k++)cells+='<div class="e"></div>';
+while(pd(d).month===m){const key=dk(d),g=days[key],fut=key>tdk,pre=key<S.first;
+const cls=key===tdk?'t ':'';let inner,c2='';
+if(g){c2='y';inner=`✔<small>${fa(g.length)} بازی</small>`}
+else if(fut||pre)inner='';else if(key===tdk){inner='؟<small>هنوز نه</small>'}else{c2='n';inner='✘<small>نشد</small>'}
+cells+=`<div class="${cls}${c2}"><b>${fa(pd(d).day)}</b>${inner}</div>`;d.setDate(d.getDate()+1)}
+const inMonth=Object.keys(days).filter(k=>{const x=noon(new Date(k+'T12:00:00'));return pd(x).month===m&&pd(x).year===y}).length;
+A.innerHTML=`<div class="nav"><button onclick="calMove(-1)">▶</button><h2>${MN[m-1]} ${fa(y)}</h2><button onclick="calMove(1)">◀</button></div>
+<div class="cal">${['ش','ی','د','س','چ','پ','ج'].map(x=>`<div class="h">${x}</div>`).join('')}${cells}</div>
+<div class="card" style="margin-top:12px"><div class="r"><span>روزهای تمرین‌شده این ماه</span><b>${fa(inMonth)}</b></div><div class="r"><span>پشت‌سرهم تا الان</span><b>${fa(streak(days))} روز</b></div>
+<div class="note">✔ تمرین شد &nbsp; ✘ تمرین نشد &nbsp; کادر نارنجی = امروز</div></div><button onclick="menu()">بازگشت</button>`}
+function calMove(n){const x=new Date(calS);if(n<0){x.setDate(x.getDate()-1)}else x.setDate(x.getDate()+32);calS=mStart(x);calendar()}
+
+/* ---------- پیشرفت و تنظیمات ---------- */
+function backup(){const b=new Blob([JSON.stringify({set:S,hist:load()})],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='mamanjoon-backup-'+dk(new Date())+'.json';document.body.appendChild(a);a.click();a.remove()}
+function restore(f){if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||!Array.isArray(o.hist))throw 0;if(o.set&&typeof o.set==='object'){if(o.set.first&&o.set.first<S.first)S.first=o.set.first;if(o.set.name)S.name=cleanName(String(o.set.name));saveS()}const cur=load(),ks=new Set(cur.map(x=>x.date)),m=cur.concat((o.hist||[]).filter(x=>x&&x.date&&x.game&&!ks.has(x.date))).sort((a,b)=>a.date<b.date?-1:1),j=JSON.stringify(m);MEM=m;localStorage.setItem('zehn_hist',j);localStorage.setItem('zehn_hist2',j);alert('بازیابی شد ✔');menu()}catch(e){alert('این فایل پشتیبان درست نیست.')}};r.readAsText(f)}
+function spark(vs,low){if(vs.length<2)return'';const v=vs.slice(-20),mn=Math.min(...v),rg=Math.max(...v)-mn||1,pts=v.map((x,i)=>{let y=(x-mn)/rg;if(low)y=1-y;return[8+i*(184/(v.length-1)),42-y*34]});
+return`<svg viewBox="0 0 200 50" style="width:100%;height:64px;direction:ltr"><polyline fill="none" stroke="#2a7f6f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>${pts.map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?5:3}" fill="${i===pts.length-1?'#f0a53a':'#2a7f6f'}"/>`).join('')}</svg>`}
+function hist(all){run++;keyH=null;onMenu=false;const h=load(),days=byDay(),nd=Object.keys(days).length;
+if(!h.length){A.innerHTML=`<h2>پیشرفت ${S.name}</h2><div class="card hero">🌱 هنوز تمرینی ثبت نشده. با اولین بازی، مسیر پیشرفتت شروع می‌شود ${who()}!</div><button onclick="menu()">بازگشت</button>`;return}
+const tot=h.reduce((a,x)=>a+(x.dur||0),0),grp={};h.forEach(x=>{(grp[gk(x)]=grp[gk(x)]||[]).push(x)});
+const ed=k=>{const[y,m,d]=k.split('-').map(Number);return Math.round(Date.UTC(y,m-1,d)/864e5)},wk=e=>Math.floor((e-2)/7),cw=wk(ed(dk(new Date()))),wc=Array(8).fill(0);
+h.forEach(x=>{const i=cw-wk(ed(x.day));if(i>=0&&i<8)wc[i]++});const mx=Math.max(...wc,1);
+const bars=wc.map((c,i)=>`<div style="flex:1;text-align:center;font-size:15px"><div>${c?fa(c):''}</div><div style="height:${c/mx*70+3}px;background:${i?'#8fc3b6':'#f0a53a'};border-radius:6px"></div><div style="color:#776;font-size:13px">${i?'':'الان'}</div></div>`).reverse().join('');
+const chs=[],order=['math:a','math:s','math:h','corsi','gng','stroop','speed','pairs'];
+const cards=order.filter(g=>grp[g]).map(g=>{const rs=grp[g],mt=METg[g],vs=rs.map(MV).filter(v=>v>0),as=rs.map(ACC).filter(a=>a!=null&&isFinite(a)),t=trend(vs,mt.low),n=rs.length,best=vs.length?(mt.low?Math.min(...vs):Math.max(...vs)):0,last=vs.length?vs[vs.length-1]:0;
+let tr;if(n<3||!t)tr='🌱 هنوز تازه شروع کرده‌ای. بعد از چند بار تمرین، روند دقیق را نشان می‌دهم.';else{chs.push(t.ch);tr=t.ch>5?`📈 نسبت به روزهای اول ${fa(Math.round(t.ch))}٪ بهتر شده. آفرین!`:t.ch<-5?'🌤 کمی پایین‌تر از روزهای اول؛ نوسان طبیعی است و دوباره بالا می‌آید.':'➖ ثابت و پایدار؛ همین ثبات هم ارزشمند است.'}
+return`<div class="card"><b>${GI[g]} ${GN[g]}</b> <span class="note">(${fa(n)} بار)</span><div class="r"><span>آخرین</span><b>${last?mt.f(last):'—'}</b></div><div class="r"><span>بهترین</span><b>${best?mt.f(best):'—'}</b></div><div class="r"><span>میانگین</span><b>${vs.length?mt.f(avgOf(vs)):'—'}</b></div>${as.length?`<div class="r"><span>دقت (درست‌بودن) میانگین</span><b>${fa(Math.round(avgOf(as)*100))}٪${as.length>1?' · آخرین '+fa(Math.round(as[as.length-1]*100))+'٪':''}</b></div>`:''}<div style="margin-top:6px">${tr}</div>${spark(vs,mt.low)}${vs.length>1?'<div class="note">نمودار: بالاتر = بهتر</div>':''}</div>`}).join('');
+const O={};h.filter(x=>x.ops).forEach(x=>Object.entries(x.ops).forEach(([o,v])=>{const z=O[o]=O[o]||[0,0,0];z[0]+=v[0];z[1]+=v[1];z[2]+=v[2]||0}));
+const on={'+':'جمع','−':'تفریق','×':'ضرب','÷':'تقسیم'},opRows=['+','−','×','÷'].filter(o=>O[o]&&O[o][0]+O[o][1]>0).map(o=>{const z=O[o],n=z[0]+z[1];return`<div class="r"><span>${on[o]} ${o}</span><b>${fa(Math.round(z[0]/n*100))}٪ درست · ${fa((z[2]/n/1000).toFixed(1))} ثانیه</b></div>`}).join('');
+const ca=chs.length?avgOf(chs):null,sum=ca==null?'🌱 چند بار دیگر تمرین کنی، روند پیشرفتت را دقیق نشان می‌دهم.':ca>5?`📈 به‌طور کلی نسبت به شروع حدود ${fa(Math.round(ca))}٪ بهتر شده‌ای. دمت گرم ${who()}!`:ca<-5?'🌤 این روزها کمی آرام‌تر بوده‌ای؛ مهم نیست. آمدنت از هر عددی مهم‌تر است.':'➖ عملکردت پایدار مانده؛ ثبات هم نشانه‌ی خوبی است.';
+const md=medals(),rec=[...h].reverse(),show=all?rec:rec.slice(0,12);
+const list=show.map(x=>{const m=METg[gk(x)],v=MV(x),a=ACC(x);return`<div class="r"><span>${new Date(x.date).toLocaleDateString('fa-IR')} · ${GI[gk(x)]} ${GN[gk(x)]}</span><b>${v?m.f(v):''}${a!=null&&isFinite(a)?' · '+fa(Math.round(a*100))+'٪':''}</b></div>`}).join('');
+A.innerHTML=`<h2>پیشرفت ${S.name}</h2><div class="card hero">${sum}<div class="note" style="color:#e8f6f1;margin-top:4px">همه‌ی مقایسه‌ها فقط با خودِ شماست، نه با دیگران.</div></div>
+<div class="card"><b>📊 خلاصه</b><div class="r"><span>تعداد تمرین‌ها</span><b>${fa(h.length)}</b></div><div class="r"><span>روزهای تمرین</span><b>${fa(nd)}</b></div><div class="r"><span>پشت‌سرهم (الان / بیشترین)</span><b>${fa(streak(days))} / ${fa(maxStreak(days))} روز</b></div>${tot?`<div class="r"><span>مجموع زمان تمرین</span><b>${fmt(tot)}</b></div>`:''}<div class="r"><span>میانگین تمرین در روزِ فعال</span><b>${fa((h.length/nd).toFixed(1))}</b></div></div>
+<div class="card"><b>🗓 تمرین هر هفته</b><div style="display:flex;direction:ltr;align-items:flex-end;gap:5px;height:105px;margin-top:6px">${bars}</div></div>
+<div class="card"><b>🏅 مدال‌ها</b><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">${md.map(m=>`<div style="text-align:center;width:30%;opacity:${m.ok?1:.28};font-size:15px"><div style="font-size:34px">${m.i}</div>${m.t}</div>`).join('')}</div></div>
+${cards}${opRows?`<div class="card"><b>➕ ریاضی به تفکیک عمل (همه‌ی دوره‌ها)</b>${opRows}</div>`:''}
+<div class="card"><b>🧾 سابقه‌ی تمرین‌ها</b> <span class="note">(${fa(h.length)} مورد، همه نگه داشته می‌شود)</span>${list}</div>
+${all?'':h.length>12?'<button class="alt" onclick="hist(true)">نمایش همه‌ی سابقه</button>':''}<button class="alt" onclick="backup()">💾 ذخیره‌ی نسخه‌ی پشتیبان</button><button onclick="menu()">بازگشت</button>`}
+function settings(){run++;keyH=null;onMenu=false;A.innerHTML=`<h2>تنظیمات</h2><div class="card">نامی که برنامه صدا می‌زند:<input id="nm" maxlength="20" value="${S.name}"></div>
+<button class="alt" onclick="S.name=cleanName(document.getElementById('nm').value);S.big=!S.big;saveS();settings()">اندازه‌ی نوشته: ${S.big?'بزرگ‌تر ✔':'معمولی ✔'} (برای تغییر لمس کنید)</button>
+<div class="card">💾 سابقه‌ی تمرین‌ها هیچ‌وقت توسط برنامه پاک نمی‌شود. برای اطمینان از پاک‌شدن اتفاقی داده‌های مرورگر، گاهی نسخه‌ی پشتیبان بگیرید.<button class="alt" onclick="backup()">ذخیره‌ی نسخه‌ی پشتیبان</button><button class="alt" onclick="document.getElementById('rf').click()">بازیابی از پشتیبان</button><input id="rf" type="file" accept=".json" style="display:none" onchange="restore(this.files[0]);this.value=''"></div>
+<button onclick="S.name=cleanName(document.getElementById('nm').value);saveS();menu()">ذخیره</button>`}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+let armed=0;const toast=m=>{const t=document.createElement('div');t.textContent=m;t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2a2a35;color:#fff;padding:12px 18px;border-radius:16px;font-size:20px;z-index:9;text-align:center';document.body.appendChild(t);setTimeout(()=>t.remove(),2200)};
+try{history.replaceState({z:0},'');history.pushState({z:1},'')}catch(e){}
+addEventListener('popstate',()=>{if(!onMenu){menu();try{history.pushState({z:1},'')}catch(e){}return}
+if(armed)return;armed=1;toast('برای خروج، یک بار دیگر «برگشت» را بزنید');setTimeout(()=>{armed=0;try{history.pushState({z:1},'')}catch(e){}},2300)});
+menu();
+</script></body></html>
