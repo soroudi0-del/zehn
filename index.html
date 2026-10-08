@@ -23,7 +23,7 @@ button.row.dn{border-color:var(--pri2);background:#f1faf6}
 .pop{animation:pop .5s}@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 .big{font-size:58px;text-align:center;direction:ltr;margin:12px 0;font-weight:bold}
 .ans{font-size:48px;text-align:center;direction:ltr;min-height:72px;background:var(--soft);border-radius:18px;margin:6px 0;border:2px dashed var(--pri2)}
-.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.pad button{margin:0;font-size:32px;padding:13px;background:#fff;color:var(--ink);border:2px solid var(--ln);box-shadow:0 3px 0 var(--ln)}
+.pad{direction:ltr;display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.pad button{margin:0;font-size:32px;padding:13px;background:#fff;color:var(--ink);border:2px solid var(--ln);box-shadow:0 3px 0 var(--ln)}
 .pad .ok{background:var(--pri);color:#fff;border:0;box-shadow:0 3px 0 #1f5f53}.pad .del{background:var(--acc);color:#fff;font-size:22px;border:0;box-shadow:0 3px 0 #b97b1c}
 .bar{display:flex;justify-content:space-between;color:#665;font-size:20px}
 .prog{height:12px;background:var(--ln);border-radius:8px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--pri2),var(--acc));border-radius:8px}
@@ -82,7 +82,12 @@ const MN=['فروردین','اردیبهشت','خرداد','تیر','مرداد'
 const noon=d=>{const x=new Date(d);x.setHours(12,0,0,0);return x};
 const mStart=d=>{d=noon(d);while(pd(d).day>1)d.setDate(d.getDate()-1);return d};
 let calS=mStart(new Date());
-function streak(days){let n=0,d=noon(new Date());if(!days[dk(d)])d.setDate(d.getDate()-1);while(days[dk(d)]){n++;d.setDate(d.getDate()-1)}return n}
+const GR=3;/* بین دو روز تمرین تا ۲ روز فراموشی بخشیده می‌شود */
+const dn=k=>{const[a,b,c]=k.split('-').map(Number);return Math.round(Date.UTC(a,b-1,c)/864e5)};
+function chains(days){const C=[];Object.keys(days).sort().map(dn).forEach(d=>{const l=C[C.length-1];if(l&&d-l.e<=GR)l.e=d;else C.push({s:d,e:d})});return C}
+const gapNow=days=>{const C=chains(days),l=C[C.length-1];return l?dn(dk(new Date()))-l.e:99};
+function streak(days){const C=chains(days),l=C[C.length-1];return l&&gapNow(days)<=GR?l.e-l.s+1:0}
+function streakMsg(days){const n=streak(days),g=gapNow(days);if(!n)return'';return g>=2?'🔥 '+fa(n)+' روز در مسیر تمرین<br>💛 چند روز نبودی، اشکالی ندارد! امروز یک تمرین کن تا مسیرت ادامه پیدا کند.':'🔥 '+fa(n)+' روز پشت‌سرهم'}
 function byDay(){const o={};load().forEach(h=>{(o[h.day]=o[h.day]||[]).push(h.game)});return o}
 
 function menu(){run++;keyH=null;onMenu=true;const days=byDay(),td=days[dk(new Date())]||[],done=new Set(td),h=new Date().getHours();
@@ -90,7 +95,7 @@ const g=h>=5&&h<12?'صبح بخیر':h>=12&&h<16?'ظهر بخیر':h>=16&&h<20?'
 A.innerHTML=`<h1>🧠 تمرین ذهن ${S.name}</h1>
 <div class="card hero"><div style="font-size:26px">${g} ${who()} 🌸</div>
 <div>${td.length?`✔ امروز ${fa(td.length)} تمرین انجام شد`:'امروز هنوز تمرین نکرده‌ای. یک بازی کوچک؟'}</div>
-<div class="note" style="color:#e8f6f1">${streak(days)?'🔥 '+fa(streak(days))+' روز پشت سر هم':''} ${medalsN()}</div><div style="margin-top:8px;font-size:20px">💬 ${hope()}</div></div>
+<div class="note" style="color:#e8f6f1">${streakMsg(days)} ${medalsN()}</div><div style="margin-top:8px;font-size:20px">💬 ${hope()}</div></div>
 ${[['math','➕','ریاضی','چهار عمل اصلی با زمان‌سنج','mathSetup'],['corsi','🟦','حافظه‌ی مکان‌ها','ترتیب مربع‌های روشن را تکرار کنید','corsi'],['gng','🟢','سبز برو، قرمز نه','سرعت و خودداری','gng'],['stroop','🎨','رنگ کلمه','رنگ نوشته را بگویید، نه خود کلمه','stroop'],['speed','⭐','ردیاب سریع','ستاره کجا بود؟','speed'],['pairs','🃏','جفت‌یابی','کارت‌های همانند را پیدا کنید','pairs']]
 .map(x=>`<button class="row ${done.has(x[0])?'dn':''}" onclick="intro('${x[0]}','${x[2]}','${x[4]}')"><span class="ic" style="background:${CL[x[0]]}">${x[1]}</span><span><b>${x[2]}</b><small>${x[3]}</small></span>${done.has(x[0])?'<span class="tick">✔</span>':''}</button>`).join('')}
 <button class="alt" onclick="calS=mStart(new Date());calendar()">📅 تقویم تمرین‌ها</button>
@@ -118,11 +123,20 @@ const gk=x=>x.game==='math'?'math:'+(x.mode||'h'):x.game;
 const MV=x=>{const m=METg[gk(x)],v=m?m.v(x):0;return isFinite(v)&&v>0?v:0};
 const ACC=x=>x.game==='gng'?1-(x.miss+x.falseAlarm)/30:x.game==='pairs'?null:x.n?x.correct/x.n:null;
 function trend(v,low){const n=v.length;if(n<2)return null;const k=Math.min(3,Math.floor(n/2)),a=avgOf(v.slice(0,k)),b=avgOf(v.slice(-k));return{ch:(low?a-b:b-a)/a*100}}
-function maxStreak(days){let m=0,c=0,p=null;Object.keys(days).sort().forEach(k=>{c=p&&Math.round((new Date(k+'T12:00')-new Date(p+'T12:00'))/864e5)===1?c+1:1;m=Math.max(m,c);p=k});return m}
-function medals(){const h=load(),days=byDay(),nd=Object.keys(days).length,ms=maxStreak(days),M=[],add=(ok,i,t)=>M.push({ok,i,t});
-add(h.length>=1,'🌱','اولین قدم');add(h.length>=10,'🌿','۱۰ تمرین');add(h.length>=50,'🌳','۵۰ تمرین');add(h.length>=150,'🏔️','۱۵۰ تمرین');
-add(nd>=7,'📅','۷ روز تمرین');add(nd>=30,'🗓️','۳۰ روز تمرین');add(ms>=3,'🔥','۳ روز پشت‌سرهم');add(ms>=7,'⭐','۷ روز پشت‌سرهم');add(ms>=14,'🏅','۱۴ روز پشت‌سرهم');add(ms>=30,'👑','۳۰ روز پشت‌سرهم');
-add(new Set(h.map(x=>x.game)).size>=6,'🎯','همه‌ی بازی‌ها را امتحان کرد');return M}
+function maxStreak(days){return Math.max(0,...chains(days).map(c=>c.e-c.s+1))}
+const MCAT=['🏁 تعداد تمرین‌ها','📅 روزهای تمرین','🔥 همراهی و پشتکار (بدون ترس از چند روز فراموشی)','🎮 استادی در هر بازی','🎯 عملکرد و ویژه'];
+function medals(){const h=load(),days=byDay(),nd=Object.keys(days).length,ms=maxStreak(days),M=[],add=(ok,i,t,c)=>M.push({ok,i,t,c});
+[[1,'🌱','اولین قدم'],[10,'🌿','۱۰ تمرین'],[25,'☘️','۲۵ تمرین'],[50,'🌳','۵۰ تمرین'],[100,'🌲','۱۰۰ تمرین'],[150,'🏔️','۱۵۰ تمرین'],[250,'🗻','۲۵۰ تمرین'],[500,'🌋','۵۰۰ تمرین'],[1000,'🚀','۱۰۰۰ تمرین']].forEach(x=>add(h.length>=x[0],x[1],x[2],0));
+[[7,'📅','۷ روز تمرین'],[30,'🗓️','۳۰ روز تمرین'],[60,'📆','۶۰ روز تمرین'],[100,'💯','۱۰۰ روز تمرین'],[200,'🎗️','۲۰۰ روز تمرین'],[365,'🎊','۳۶۵ روز تمرین']].forEach(x=>add(nd>=x[0],x[1],x[2],1));
+[[3,'🔥','۳ روز همراهی'],[7,'⭐','یک هفته'],[14,'🏅','دو هفته'],[30,'🥉','یک ماه'],[60,'🥈','۲ ماه'],[100,'🥇','۱۰۰ روز'],[180,'🏆','۶ ماه'],[365,'👑','یک سال'],[730,'💎','دو سال'],[1825,'🎖️','۵ سال']].forEach(x=>add(ms>=x[0],x[1],x[2],2));
+[['math','🧮','استاد ریاضی'],['gng','🚦','استاد سبز و قرمز'],['stroop','🎨','استاد رنگ کلمه'],['speed','⚡','استاد ردیاب'],['pairs','🃏','استاد جفت‌یابی'],['corsi','🧩','استاد حافظه‌ی مکان‌ها']].forEach(x=>add(h.filter(y=>y.game===x[0]).length>=10,x[1],x[2],3));
+const gs=new Set(h.map(x=>x.game)),perDay={};h.forEach(x=>perDay[x.day]=(perDay[x.day]||0)+1);
+const acc=h.map(ACC).filter(v=>v!=null&&isFinite(v)),tm=h.reduce((a,x)=>a+(x.dur||0),0),ks=Object.keys(days).sort().map(dn);let back=false;for(let k=1;k<ks.length;k++)if(ks[k]-ks[k-1]>GR)back=true;
+add(gs.size>=6,'🎯','همه‌ی بازی‌ها را امتحان کرد',4);add(['math','gng','stroop','speed','pairs','corsi'].every(g=>h.filter(y=>y.game===g).length>=10),'🎖️','استاد همه‌ی بازی‌ها',4);
+add(acc.some(v=>v>=.9),'🎯','دقت ۹۰٪ یا بیشتر',4);add(acc.some(v=>v>=1),'💯','دقت کامل، بدون یک اشتباه',4);
+add(Object.values(perDay).some(v=>v>=3),'🌞','سه تمرین در یک روز',4);add(Object.values(perDay).some(v=>v>=6),'🌈','شش تمرین در یک روز',4);
+add(tm>=36e5,'⏱️','یک ساعت تمرین',4);add(tm>=36e6,'⌛','ده ساعت تمرین',4);add(back,'💛','دوباره برگشتی! (بعد از چند روز دوری)',4);
+return M}
 const medalsN=()=>{const n=medals().filter(m=>m.ok).length;return n?'· 🏅 '+fa(n)+' مدال':''};
 function result(game,lines,rec){const full=Object.assign({game},rec),g=gk(full),mt=METg[g],prev=load().filter(x=>gk(x)===g).map(MV).filter(v=>v>0),m=MV(full),mb=medals();
 let msg='🌱 اولین ثبت این بازی انجام شد. از حالا پیشرفتت را دنبال می‌کنیم!';
@@ -279,10 +293,10 @@ const on={'+':'جمع','−':'تفریق','×':'ضرب','÷':'تقسیم'},opRow
 const ca=chs.length?avgOf(chs):null,sum=ca==null?'🌱 چند بار دیگر تمرین کنی، روند پیشرفتت را دقیق نشان می‌دهم.':ca>5?`📈 به‌طور کلی نسبت به شروع حدود ${fa(Math.round(ca))}٪ بهتر شده‌ای. دمت گرم ${who()}!`:ca<-5?'🌤 این روزها کمی آرام‌تر بوده‌ای؛ مهم نیست. آمدنت از هر عددی مهم‌تر است.':'➖ عملکردت پایدار مانده؛ ثبات هم نشانه‌ی خوبی است.';
 const md=medals(),rec=[...h].reverse(),show=all?rec:rec.slice(0,12);
 const list=show.map(x=>{const m=METg[gk(x)],v=MV(x),a=ACC(x);return`<div class="r"><span>${new Date(x.date).toLocaleDateString('fa-IR')} · ${GI[gk(x)]} ${GN[gk(x)]}</span><b>${v?m.f(v):''}${a!=null&&isFinite(a)?' · '+fa(Math.round(a*100))+'٪':''}</b></div>`}).join('');
-A.innerHTML=`<h2>پیشرفت ${S.name}</h2><div class="card hero">${sum}<div class="note" style="color:#e8f6f1;margin-top:4px">همه‌ی مقایسه‌ها فقط با خودِ شماست، نه با دیگران.</div></div>
+A.innerHTML=`<h2>پیشرفت ${S.name}</h2><div class="card hero">${sum}<div class="note" style="color:#e8f6f1;margin-top:4px">همه‌ی مقایسه‌ها فقط با خودِ شماست، نه با دیگران.<br>💛 اگر یکی دو روز تمرین را فراموش کنید، مسیرتان از نو شروع نمی‌شود.</div></div>
 <div class="card"><b>📊 خلاصه</b><div class="r"><span>تعداد تمرین‌ها</span><b>${fa(h.length)}</b></div><div class="r"><span>روزهای تمرین</span><b>${fa(nd)}</b></div><div class="r"><span>پشت‌سرهم (الان / بیشترین)</span><b>${fa(streak(days))} / ${fa(maxStreak(days))} روز</b></div>${tot?`<div class="r"><span>مجموع زمان تمرین</span><b>${fmt(tot)}</b></div>`:''}<div class="r"><span>میانگین تمرین در روزِ فعال</span><b>${fa((h.length/nd).toFixed(1))}</b></div></div>
 <div class="card"><b>🗓 تمرین هر هفته</b><div style="display:flex;direction:ltr;align-items:flex-end;gap:5px;height:105px;margin-top:6px">${bars}</div></div>
-<div class="card"><b>🏅 مدال‌ها</b><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">${md.map(m=>`<div style="text-align:center;width:30%;opacity:${m.ok?1:.28};font-size:15px"><div style="font-size:34px">${m.i}</div>${m.t}</div>`).join('')}</div></div>
+<div class="card"><b>🏅 مدال‌ها و جام‌ها</b> <span class="note">(${fa(md.filter(m=>m.ok).length)} از ${fa(md.length)})</span>${MCAT.map((c,ci)=>`<div style="margin-top:12px;font-weight:bold;color:var(--pri)">${c}</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">${md.filter(m=>m.c===ci).map(m=>`<div style="text-align:center;width:30%;opacity:${m.ok?1:.28};font-size:15px"><div style="font-size:34px">${m.i}</div>${m.t}</div>`).join('')}</div>`).join('')}</div>
 ${cards}${opRows?`<div class="card"><b>➕ ریاضی به تفکیک عمل (همه‌ی دوره‌ها)</b>${opRows}</div>`:''}
 <div class="card"><b>🧾 سابقه‌ی تمرین‌ها</b> <span class="note">(${fa(h.length)} مورد، همه نگه داشته می‌شود)</span>${list}</div>
 ${all?'':h.length>12?'<button class="alt" onclick="hist(true)">نمایش همه‌ی سابقه</button>':''}<button class="alt" onclick="backup()">💾 ذخیره‌ی نسخه‌ی پشتیبان</button><button onclick="menu()">بازگشت</button>`}
